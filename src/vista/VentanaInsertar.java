@@ -1,21 +1,12 @@
 package vista;
 
-
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import controlador.LoginControlador;
 import modelo.Usuario;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 public class VentanaInsertar extends JDialog implements ActionListener {
 
