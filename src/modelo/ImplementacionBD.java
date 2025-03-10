@@ -3,7 +3,7 @@ package modelo;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class ImplementacionBD implements UsuarioDAO{
+public class ImplementacionBD implements UsuarioDAO {
 	// Atributos
 		private Connection con;
 		private PreparedStatement stmt;
