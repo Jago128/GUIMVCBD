@@ -12,7 +12,6 @@ public class Usuario {
         this.nombre = nombre;
         this.contrasena = contrasena;
     }
-
  
     public String getNombre() {
         return nombre;
@@ -34,5 +33,4 @@ public class Usuario {
     public String toString() {
         return "Usuario [nombre=" + nombre + ", contrasena=" + contrasena + "]";
     }
-
 }
