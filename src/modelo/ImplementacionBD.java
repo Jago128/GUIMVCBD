@@ -1,7 +1,7 @@
 package modelo;
 
 import java.sql.*;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class ImplementacionBD implements UsuarioDAO {
 	private Connection con;
@@ -77,10 +77,28 @@ public class ImplementacionBD implements UsuarioDAO {
 		}
 		return ok;
 	}
+
+	@Override
+	public Map<String, Usuario> show(Usuario usuario) {
+		Map<String, Usuario> users=new TreeMap<>();
+		Usuario user;
+		ResultSet rs=null;
+		this.openConnection();
+		try {
+			stmt=con.prepareStatement(sqlConsulta);
+			rs=stmt.executeQuery();
+			while (rs.next()) {
+				user=new Usuario();
+				user.setNombre(rs.getString("nombre"));
+				user.setContrasena("contraseña");
+				users.put(user.getNombre(), user);
+			}
+			rs.close();
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return users;
+	}
 }
-
-
-
-
-
-

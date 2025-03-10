@@ -12,11 +12,9 @@ public class VentanaInsertar extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JLabel lblNewLabel_2;
-	private JButton btnNewButton ;
+	private JButton btnShow;
 	private LoginControlador cont;
+	private JComboBox<String> comboBox;
 
 	public VentanaInsertar(JFrame parent, LoginControlador cont) {
 		super(parent,true);
@@ -25,40 +23,22 @@ public class VentanaInsertar extends JDialog implements ActionListener {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(null);
 
-		JLabel lblNewLabel = new JLabel("USUARIO");
-		lblNewLabel.setBounds(58, 83, 84, 19);
-		getContentPane().add(lblNewLabel);
-
-		textField = new JTextField();
-		textField.setBounds(178, 83, 96, 19);
-		getContentPane().add(textField);
-		textField.setColumns(10);
-
-		JLabel lblNewLabel_1 = new JLabel("Contraseña");
-		lblNewLabel_1.setBounds(58, 126, 71, 13);
-		getContentPane().add(lblNewLabel_1);
-
-		textField_1 = new JTextField();
-		textField_1.setBounds(178, 123, 96, 19);
-		getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-
-		btnNewButton = new JButton("INSERTAR");
-		btnNewButton.setBounds(161, 169, 131, 42);
-		getContentPane().add(btnNewButton);
-
-		lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setBounds(114, 227, 224, 26);
-		getContentPane().add(lblNewLabel_2);
+		btnShow = new JButton("Mostrar usuarios");
+		btnShow.setBounds(145, 208, 131, 42);
+		getContentPane().add(btnShow);
+		
+		comboBox = new JComboBox<>();
+		comboBox.setBounds(92, 41, 238, 22);
+		getContentPane().add(comboBox);
 		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		btnNewButton.addActionListener(this);
+		btnShow.addActionListener(this);
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource()==btnNewButton) {
+		if (e.getSource()==btnShow) {
 			if (cont.insertarUsuario(new Usuario(textField.getText(),textField_1.getText()))) {
 				lblNewLabel_2.setText("Inserción ok");
 			} else {
