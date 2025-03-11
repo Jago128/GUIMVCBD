@@ -17,11 +17,11 @@ public class VentanaBotones extends JFrame implements ActionListener{
 	private JButton btnDelete;
 	private LoginControlador cont;
 
-	public VentanaBotones(LoginControlador cont) {
+	public VentanaBotones(JFrame parent, LoginControlador cont) {
 		setTitle("Elija una opcion:");
 		this.cont=cont;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 435, 270);
+		setBounds(100, 100, 420, 270);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -29,26 +29,26 @@ public class VentanaBotones extends JFrame implements ActionListener{
 		
 		btnInsert = new JButton("Insertar");
 		btnInsert.setFont(new Font("Source Sans Pro", Font.PLAIN, 20));
-		btnInsert.setBounds(10, 11, 191, 101);
+		btnInsert.setBounds(10, 11, 183, 101);
 		contentPane.add(btnInsert);
 		btnInsert.addActionListener(this);
 		
 		btnShow = new JButton("Visualizar");
 		btnShow.setFont(new Font("Source Sans Pro", Font.PLAIN, 20));
-		btnShow.setBounds(211, 11, 201, 101);
+		btnShow.setBounds(211, 11, 183, 101);
 		contentPane.add(btnShow);
 		btnShow.addActionListener(this);
 
 		
 		btnUpdate = new JButton("Modificar");
 		btnUpdate.setFont(new Font("Source Sans Pro", Font.PLAIN, 20));
-		btnUpdate.setBounds(10, 123, 191, 104);
+		btnUpdate.setBounds(211, 123, 183, 104);
 		contentPane.add(btnUpdate);
 		btnUpdate.addActionListener(this);
 		
 		btnDelete = new JButton("Borrar");
 		btnDelete.setFont(new Font("Source Sans Pro", Font.PLAIN, 20));
-		btnDelete.setBounds(211, 123, 201, 104);
+		btnDelete.setBounds(10, 123, 183, 104);
 		contentPane.add(btnDelete);
 		btnDelete.addActionListener(this);
 	}
