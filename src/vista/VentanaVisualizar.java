@@ -1,11 +1,10 @@
 package vista;
 
-import java.awt.event.*;
 import javax.swing.*;
 
 import controlador.LoginControlador;
 
-public class VentanaVisualizar extends JDialog implements ActionListener {
+public class VentanaVisualizar extends JDialog {
 	private static final long serialVersionUID = 1L;
 	
 	private JComboBox<String> comboBox;
@@ -24,10 +23,5 @@ public class VentanaVisualizar extends JDialog implements ActionListener {
 		comboBox.setModel(new DefaultComboBoxModel<>(names));
 		comboBox.setSelectedIndex(-1);
 		getContentPane().add(comboBox);
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
 	}
 }

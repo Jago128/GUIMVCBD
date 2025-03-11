@@ -64,7 +64,8 @@ public class VentanaBotones extends JFrame implements ActionListener{
 		} else if (e.getSource()==btnUpdate) {
 			
 		} else if (e.getSource()==btnDelete) {
-			
+			VentanaBorrar dialog = new VentanaBorrar();
+			dialog.setVisible(true);
 		}
 	}
 }

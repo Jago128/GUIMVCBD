@@ -20,9 +20,11 @@ public class ImplementacionDB implements UsuarioDAO{
 	private String userBD;
 	private String passwordBD;
 
-	final String sql = "SELECT * FROM usuario WHERE nombre = ? AND contrasena = ?";
-	final String sqlInsert = "INSERT INTO usuario VALUES ( ?,?)";
-	final String sqlConsulta = "SELECT * FROM usuario";
+	final String SQLLOGIN = "SELECT * FROM usuario WHERE nombre = ? AND contrasena = ?";
+	final String SQLINSERT = "INSERT INTO usuario VALUES (?,?)";
+	final String SQLSHOW = "SELECT * FROM usuario";
+	final String SQLUPDATE = "UPDATE usuario SET contraseña=? WHERE nombre=?";
+	final String SQLDELETE = "DELETE FROM usuario WHERE nombre=?";
 
 	public ImplementacionDB() {
 		this.configFile = ResourceBundle.getBundle("modelo.configClase");
@@ -49,7 +51,7 @@ public class ImplementacionDB implements UsuarioDAO{
 		this.openConnection();
 
 		try {
-			stmt = con.prepareStatement(sql);
+			stmt = con.prepareStatement(SQLLOGIN);
 			stmt.setString(1, usuario.getNombre());
 			stmt.setString(2, usuario.getContrasena());
 			ResultSet resultado = stmt.executeQuery();
@@ -70,7 +72,7 @@ public class ImplementacionDB implements UsuarioDAO{
 		boolean ok=false;
 		this.openConnection();
 		try {
-			stmt = con.prepareStatement(sqlInsert);
+			stmt = con.prepareStatement(SQLINSERT);
 			stmt.setString(1, usuario.getNombre());
 			stmt.setString(2, usuario.getContrasena());
 			if (stmt.executeUpdate()>0) {
@@ -92,7 +94,7 @@ public class ImplementacionDB implements UsuarioDAO{
 
 		this.openConnection();
 		try {
-			stmt = con.prepareStatement(sqlConsulta);
+			stmt = con.prepareStatement(SQLSHOW);
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				usuario = new Usuario();
@@ -111,12 +113,37 @@ public class ImplementacionDB implements UsuarioDAO{
 
 	@Override
 	public boolean update(Usuario usuario) {
-		return false;
+		boolean check=false;
+
+		try {
+			stmt=con.prepareStatement(SQLUPDATE);
+			stmt.setString(1, usuario.getContrasena());
+			stmt.setString(2, usuario.getNombre());
+			if (stmt.executeUpdate()>0) {
+				check=true;
+			}
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return check;
 	}
 
 	@Override
 	public boolean delete(String nom) {
-		
-		return false;
+		boolean check=false;
+		try {
+			stmt=con.prepareStatement(SQLDELETE);
+			stmt.setString(1, nom);
+			if (stmt.executeUpdate()>0) {
+				check=true;
+			}
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return check;
 	}
 }
