@@ -60,7 +60,7 @@ public class VentanaLogin extends JFrame implements ActionListener{
 		if (e.getSource()==btnLogin) {
 			if (cont.comprobarUsuario(new Usuario (campoUsuario.getText(),new String(campoContrasena.getPassword())))) {
 				lblNewLabel_1.setText("Usuario Logeado");
-				VentanaBotones frame = new VentanaBotones(this,cont);
+				VentanaBotones frame = new VentanaBotones(cont);
 				frame.setVisible(true);
 				dispose();
 			} else {
