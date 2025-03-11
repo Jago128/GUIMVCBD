@@ -19,9 +19,9 @@ public class VentanaLogin extends JFrame implements ActionListener{
 
 	public VentanaLogin(LoginControlador controlador) {
 		this.cont=controlador;
-		setTitle("Principal");
+		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 340, 190);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -29,25 +29,25 @@ public class VentanaLogin extends JFrame implements ActionListener{
 		contentPane.setLayout(null);
 
 		campoUsuario = new JTextField();
-		campoUsuario.setBounds(197, 97, 96, 19);
+		campoUsuario.setBounds(147, 39, 105, 19);
 		contentPane.add(campoUsuario);
 		campoUsuario.setColumns(10);
 
 		campoContrasena = new JPasswordField();
-		campoContrasena.setBounds(200, 148, 105, 19);
+		campoContrasena.setBounds(147, 79, 105, 19);
 		contentPane.add(campoContrasena);
 
 		btnLogin = new JButton("Login");
-		btnLogin.setBounds(160, 209, 85, 21);
+		btnLogin.setBounds(116, 119, 85, 21);
 		contentPane.add(btnLogin);
 		btnLogin.addActionListener(this);
 
-		JLabel lblNewLabel = new JLabel("Usuario");
-		lblNewLabel.setBounds(78, 100, 109, 16);
+		JLabel lblNewLabel = new JLabel("Nombre de usuario:");
+		lblNewLabel.setBounds(46, 41, 94, 16);
 		contentPane.add(lblNewLabel);
 
-		JLabel Contarseña = new JLabel("Contarseña");
-		Contarseña.setBounds(78, 151, 109, 16);
+		JLabel Contarseña = new JLabel("Contraseña:");
+		Contarseña.setBounds(78, 81, 62, 16);
 		contentPane.add(Contarseña);
 
 		lblNewLabel_1 = new JLabel("");
@@ -60,8 +60,8 @@ public class VentanaLogin extends JFrame implements ActionListener{
 		if (e.getSource()==btnLogin) {
 			if (cont.comprobarUsuario(new Usuario (campoUsuario.getText(),new String(campoContrasena.getPassword())))) {
 				lblNewLabel_1.setText("Usuario Logeado");
-				VentanaInsertar v=new  VentanaInsertar(this,cont);
-				v.setVisible(true);
+				VentanaBotones frame = new VentanaBotones(this,cont);
+				frame.setVisible(true);
 				dispose();
 			} else {
 				lblNewLabel_1.setText("Usuario no encontrado");

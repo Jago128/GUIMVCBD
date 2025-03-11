@@ -13,7 +13,7 @@ public class ImplementacionBD implements UsuarioDAO{
 	private Connection con;
 	private PreparedStatement stmt;
 	private ResourceBundle configFile;
-	
+
 	@SuppressWarnings("unused")
 	private String driverBD;
 	private String urlBD;
@@ -65,30 +65,30 @@ public class ImplementacionBD implements UsuarioDAO{
 		return existe;
 	} 
 
-	/*@Override
-		public boolean insertarUsuario(Usuario usuario) {
-			boolean ok=false;
-			this.openConnection();
-			try {
-				stmt = con.prepareStatement(sqlInsert);
-				stmt.setString(1, usuario.getNombre());
-				stmt.setString(2, usuario.getContrasena());
-				if (stmt.executeUpdate()>0) {
-					ok=true;
-				}
-	            stmt.close();
-	            con.close();
-			  } catch (SQLException e) {
-	             System.out.println("Error al verificar credenciales: " + e.getMessage());
-	        }
-			return ok;
-		}*/
-	
+	@Override
+	public boolean insertarUsuario(Usuario usuario) {
+		boolean ok=false;
+		this.openConnection();
+		try {
+			stmt = con.prepareStatement(sqlInsert);
+			stmt.setString(1, usuario.getNombre());
+			stmt.setString(2, usuario.getContrasena());
+			if (stmt.executeUpdate()>0) {
+				ok=true;
+			}
+			stmt.close();
+			con.close();
+		} catch (SQLException e) {
+			System.out.println("Error al verificar credenciales: " + e.getMessage());
+		}
+		return ok;
+	}
+
 	public Map <String,Usuario> mostrar() {
 		ResultSet rs=null;
 		Usuario usuario;
 		Map<String,Usuario> usuarios=new TreeMap<>();
-		
+
 		this.openConnection();
 		try {
 			stmt = con.prepareStatement(sqlConsulta);

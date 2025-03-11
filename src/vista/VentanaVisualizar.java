@@ -1,51 +1,33 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import java.awt.event.*;
+import javax.swing.*;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import controlador.LoginControlador;
 
-public class VentanaVisualizar extends JDialog {
-
+public class VentanaVisualizar extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	private final JPanel contentPanel = new JPanel();
+	
+	private JButton btnNewButton;
+	private JComboBox<String> comboBox;
 
-	public static void main(String[] args) {
-		try {
-			VentanaVisualizar dialog = new VentanaVisualizar();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public VentanaVisualizar(JFrame parent, LoginControlador cont) {
+		
+		setTitle("Visualizar Usuarios");
+		setBounds(100, 100, 430, 190);
+		getContentPane().setLayout(null);
+		
+		comboBox = new JComboBox<>();
+		comboBox.setBounds(86, 30, 243, 22);
+		getContentPane().add(comboBox);
+		
+		btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(160, 96, 89, 23);
+		getContentPane().add(btnNewButton);
 	}
 
-
-	public VentanaVisualizar() {
-		setBounds(100, 100, 1130, 595);
-		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
-		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
-		getContentPane().add(contentPanel, BorderLayout.CENTER);
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
-			{
-				JButton cancelButton = new JButton("Cancel");
-				cancelButton.setActionCommand("Cancel");
-				buttonPane.add(cancelButton);
-			}
-		}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
 	}
-
 }
