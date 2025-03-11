@@ -1,6 +1,6 @@
 package controlador;
 
-import modelo.ImplementacionBD;
+import modelo.ImplementacionDB;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
 import vista.VentanaLogin;
@@ -8,7 +8,7 @@ import vista.VentanaLogin;
 import java.util.Map;
 
 public class LoginControlador {
-	UsuarioDAO dao=new ImplementacionBD();
+	UsuarioDAO dao=new ImplementacionDB();
 	
 	public void visualizarPantalla() {
 		VentanaLogin ven = new VentanaLogin(this);
@@ -25,5 +25,13 @@ public class LoginControlador {
 	
 	public Map <String,Usuario> mostrar() {
 		return dao.mostrar();
+	}
+	
+	public boolean update(Usuario usuario) {
+		return dao.update(usuario);
+	}
+
+	public boolean delete(String nom) {
+		return delete(nom);
 	}
 }

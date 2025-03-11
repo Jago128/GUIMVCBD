@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-public class ImplementacionBD implements UsuarioDAO{
+public class ImplementacionDB implements UsuarioDAO{
 	private Connection con;
 	private PreparedStatement stmt;
 	private ResourceBundle configFile;
@@ -24,7 +24,7 @@ public class ImplementacionBD implements UsuarioDAO{
 	final String sqlInsert = "INSERT INTO usuario VALUES ( ?,?)";
 	final String sqlConsulta = "SELECT * FROM usuario";
 
-	public ImplementacionBD() {
+	public ImplementacionDB() {
 		this.configFile = ResourceBundle.getBundle("modelo.configClase");
 		this.driverBD = this.configFile.getString("Driver");
 		this.urlBD = this.configFile.getString("Conn");
@@ -84,6 +84,7 @@ public class ImplementacionBD implements UsuarioDAO{
 		return ok;
 	}
 
+	@Override
 	public Map <String,Usuario> mostrar() {
 		ResultSet rs=null;
 		Usuario usuario;
@@ -106,5 +107,16 @@ public class ImplementacionBD implements UsuarioDAO{
 			System.out.println("Error de SQL.");
 		}
 		return usuarios;
+	}
+
+	@Override
+	public boolean update(Usuario usuario) {
+		return false;
+	}
+
+	@Override
+	public boolean delete(String nom) {
+		
+		return false;
 	}
 }
