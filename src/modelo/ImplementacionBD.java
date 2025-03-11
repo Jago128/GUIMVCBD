@@ -1,20 +1,26 @@
 package modelo;
 
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Map;
+import java.util.ResourceBundle;
+import java.util.TreeMap;
 
-public class ImplementacionBD implements UsuarioDAO {
+public class ImplementacionBD implements UsuarioDAO{
 	private Connection con;
 	private PreparedStatement stmt;
-
 	private ResourceBundle configFile;
+	
 	@SuppressWarnings("unused")
 	private String driverBD;
 	private String urlBD;
 	private String userBD;
 	private String passwordBD;
 
-	final String sql = "SELECT * FROM usuario WHERE usuario = ? AND contrasena = ?";
+	final String sql = "SELECT * FROM usuario WHERE nombre = ? AND contrasena = ?";
 	final String sqlInsert = "INSERT INTO usuario VALUES ( ?,?)";
 	final String sqlConsulta = "SELECT * FROM usuario";
 
@@ -28,7 +34,7 @@ public class ImplementacionBD implements UsuarioDAO {
 
 	private void openConnection() {
 		try {
-			con=DriverManager.getConnection(urlBD, this.userBD, this.passwordBD);
+			con = DriverManager.getConnection(urlBD, this.userBD, this.passwordBD);
 		} catch (SQLException e) {
 			System.out.println("Error al intentar abrir la BD");
 			e.printStackTrace();
@@ -46,7 +52,7 @@ public class ImplementacionBD implements UsuarioDAO {
 			stmt = con.prepareStatement(sql);
 			stmt.setString(1, usuario.getNombre());
 			stmt.setString(2, usuario.getContrasena());
-			ResultSet resultado=stmt.executeQuery();
+			ResultSet resultado = stmt.executeQuery();
 			if (resultado.next()) {
 				existe = true;
 			}
@@ -54,51 +60,51 @@ public class ImplementacionBD implements UsuarioDAO {
 			stmt.close();
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("Error al verificar credenciales: "+e.getMessage());
+			System.out.println("Error al verificar credenciales: " + e.getMessage());
 		}
 		return existe;
-	}
+	} 
 
-	@Override
-	public boolean insertarUsuario(Usuario usuario) {
-		boolean ok=false;
-		this.openConnection();
-		try {
-			stmt = con.prepareStatement(sqlInsert);
-			stmt.setString(1, usuario.getNombre());
-			stmt.setString(2, usuario.getContrasena());
-			if (stmt.executeUpdate()>0) {
-				ok=true;
-			}
-			stmt.close();
-			con.close();
-		} catch (SQLException e) {
-			System.out.println("Error al verificar credenciales: "+e.getMessage());
-		}
-		return ok;
-	}
-
-	@Override
-	public Map<String, Usuario> show(Usuario usuario) {
-		Map<String, Usuario> users=new TreeMap<>();
-		Usuario user;
+	/*@Override
+		public boolean insertarUsuario(Usuario usuario) {
+			boolean ok=false;
+			this.openConnection();
+			try {
+				stmt = con.prepareStatement(sqlInsert);
+				stmt.setString(1, usuario.getNombre());
+				stmt.setString(2, usuario.getContrasena());
+				if (stmt.executeUpdate()>0) {
+					ok=true;
+				}
+	            stmt.close();
+	            con.close();
+			  } catch (SQLException e) {
+	             System.out.println("Error al verificar credenciales: " + e.getMessage());
+	        }
+			return ok;
+		}*/
+	
+	public Map <String,Usuario> mostrar() {
 		ResultSet rs=null;
+		Usuario usuario;
+		Map<String,Usuario> usuarios=new TreeMap<>();
+		
 		this.openConnection();
 		try {
-			stmt=con.prepareStatement(sqlConsulta);
-			rs=stmt.executeQuery();
+			stmt = con.prepareStatement(sqlConsulta);
+			rs = stmt.executeQuery();
 			while (rs.next()) {
-				user=new Usuario();
-				user.setNombre(rs.getString("nombre"));
-				user.setContrasena("contraseña");
-				users.put(user.getNombre(), user);
-			}
+				usuario = new Usuario();
+				usuario.setNombre(rs.getString("nombre"));
+				usuario.setContrasena(rs.getString("contrasena"));
+				usuarios.put(usuario.getNombre(), usuario);			
+			}	
 			rs.close();
 			stmt.close();
 			con.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Error de SQL.");
 		}
-		return users;
+		return usuarios;
 	}
 }

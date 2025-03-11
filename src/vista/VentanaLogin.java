@@ -1,9 +1,8 @@
 package vista;
 
 import java.awt.event.*;
-
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
+import javax.swing.border.*;
 
 import controlador.LoginControlador;
 import modelo.Usuario;
@@ -61,7 +60,7 @@ public class VentanaLogin extends JFrame implements ActionListener{
 		if (e.getSource()==btnLogin) {
 			if (cont.comprobarUsuario(new Usuario (campoUsuario.getText(),new String(campoContrasena.getPassword())))) {
 				lblNewLabel_1.setText("Usuario Logeado");
-				VentanaInsertar v=new VentanaInsertar(this,cont);
+				VentanaInsertar v=new  VentanaInsertar(this,cont);
 				v.setVisible(true);
 				dispose();
 			} else {
