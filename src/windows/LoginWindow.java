@@ -1,11 +1,11 @@
-package vista;
+package windows;
 
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import controlador.LoginControlador;
-import modelo.Usuario;
+import controller.LoginController;
+import model.Usuario;
 
 public class LoginWindow extends JFrame implements ActionListener{
 
@@ -14,10 +14,10 @@ public class LoginWindow extends JFrame implements ActionListener{
 	private JTextField textfieldName;
 	private JPasswordField passwordField;
 	private JButton btnLogin;
-	private LoginControlador cont;
+	private LoginController cont;
 	JLabel lblResult;
 
-	public LoginWindow(LoginControlador controlador) {
+	public LoginWindow(LoginController controlador) {
 		this.cont=controlador;
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

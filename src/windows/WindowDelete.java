@@ -1,9 +1,9 @@
-package vista;
+package windows;
 
 import java.awt.event.*;
 import javax.swing.*;
 
-import controlador.LoginControlador;
+import controller.LoginController;
 
 public class WindowDelete extends JDialog implements ActionListener {
 
@@ -11,9 +11,9 @@ public class WindowDelete extends JDialog implements ActionListener {
 	private JTextField textFieldName;
 	private JLabel lblResult;
 	private JButton btnDelete;
-	private LoginControlador cont;
+	private LoginController cont;
 
-	public WindowDelete(JFrame parent, LoginControlador cont) {
+	public WindowDelete(JFrame parent, LoginController cont) {
 		setTitle("Eliminar Usuario");
 		this.cont=cont;
 		setBounds(100, 100, 320, 170);

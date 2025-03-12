@@ -1,13 +1,13 @@
-package controlador;
-
-import modelo.DBImplementation;
-import modelo.Usuario;
-import modelo.UsuarioDAO;
-import vista.LoginWindow;
+package controller;
 
 import java.util.Map;
 
-public class LoginControlador {
+import model.DBImplementation;
+import model.Usuario;
+import model.UsuarioDAO;
+import windows.LoginWindow;
+
+public class LoginController {
 	UsuarioDAO dao=new DBImplementation();
 	
 	public void visualizarPantalla() {

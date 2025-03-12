@@ -1,4 +1,4 @@
-package vista;
+package windows;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,8 +6,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import controlador.LoginControlador;
-import modelo.Usuario;
+import controller.LoginController;
+import model.Usuario;
 
 public class WindowModify extends JDialog implements ActionListener {
 	private static final long serialVersionUID = 1L;
@@ -17,9 +17,9 @@ public class WindowModify extends JDialog implements ActionListener {
 	private JButton btnNewButton;
 	private JLabel lblResult;
 	private JPasswordField passwordField;
-	private LoginControlador cont;
+	private LoginController cont;
 
-	public WindowModify(JFrame parent, LoginControlador cont) {
+	public WindowModify(JFrame parent, LoginController cont) {
 		this.cont=cont;
 		setBounds(100, 100, 370, 230);
 		getContentPane().setLayout(new BorderLayout());

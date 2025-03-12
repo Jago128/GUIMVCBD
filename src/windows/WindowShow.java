@@ -1,16 +1,16 @@
-package vista;
+package windows;
 
 import javax.swing.*;
 
-import controlador.LoginControlador;
+import controller.LoginController;
 
 public class WindowShow extends JDialog {
 	private static final long serialVersionUID = 1L;
 	
 	private JComboBox<String> comboBox;
-	private LoginControlador cont;
+	private LoginController cont;
 
-	public WindowShow(JFrame parent, LoginControlador cont) {
+	public WindowShow(JFrame parent, LoginController cont) {
 		this.cont=cont;
 		setTitle("Visualizar Usuarios");
 		setBounds(100, 100, 430, 190);

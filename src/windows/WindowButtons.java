@@ -1,11 +1,11 @@
-package vista;
+package windows;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import controlador.LoginControlador;
+import controller.LoginController;
 
 public class WindowButtons extends JFrame implements ActionListener{
 
@@ -15,9 +15,9 @@ public class WindowButtons extends JFrame implements ActionListener{
 	private JButton btnShow;
 	private JButton btnUpdate;
 	private JButton btnDelete;
-	private LoginControlador cont;
+	private LoginController cont;
 
-	public WindowButtons(JFrame parent, LoginControlador cont) {
+	public WindowButtons(JFrame parent, LoginController cont) {
 		setTitle("Elija una opcion:");
 		this.cont=cont;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

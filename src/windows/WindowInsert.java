@@ -1,4 +1,4 @@
-package vista;
+package windows;
 
 
 import java.awt.*;
@@ -8,20 +8,20 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.*;
 
-import controlador.LoginControlador;
-import modelo.Usuario;
+import controller.LoginController;
+import model.Usuario;
 
 public class WindowInsert extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel=new JPanel();
-	private LoginControlador cont;
+	private LoginController cont;
 	private JTextField textFieldName;
 	private JButton btnAdd;
 	private JLabel lblResult;
 	private JPasswordField passwordField;
 
-	public WindowInsert(JFrame parent, LoginControlador cont) {
+	public WindowInsert(JFrame parent, LoginController cont) {
 		super(parent,true);
 		this.cont=cont;
 		setTitle("Insertar Usuarios");
