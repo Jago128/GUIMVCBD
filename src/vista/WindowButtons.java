@@ -55,7 +55,6 @@ public class WindowButtons extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		if (e.getSource()==btnInsert) {
 			WindowInsert v=new WindowInsert(this,cont);
 			v.setVisible(true);
