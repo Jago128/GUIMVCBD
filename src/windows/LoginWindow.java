@@ -1,13 +1,14 @@
 package windows;
 
 import java.awt.event.*;
+
 import javax.swing.*;
 import javax.swing.border.*;
 
 import controller.LoginController;
 import model.Usuario;
 
-public class LoginWindow extends JFrame implements ActionListener{
+public class LoginWindow extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -49,7 +50,7 @@ public class LoginWindow extends JFrame implements ActionListener{
 		JLabel lblPassword = new JLabel("Contraseña:");
 		lblPassword.setBounds(78, 81, 62, 16);
 		contentPane.add(lblPassword);
-		
+
 		lblResult = new JLabel("");
 		lblResult.setHorizontalAlignment(SwingConstants.CENTER);
 		lblResult.setBounds(10, 151, 304, 29);
