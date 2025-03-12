@@ -2,9 +2,7 @@ package controller;
 
 import java.util.Map;
 
-import model.DBImplementation;
-import model.Usuario;
-import model.UsuarioDAO;
+import model.*;
 import windows.LoginWindow;
 
 public class LoginController {
