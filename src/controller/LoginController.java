@@ -8,7 +8,7 @@ import windows.LoginWindow;
 public class LoginController {
 	UsuarioDAO dao=new DBImplementation();
 	
-	public void showLogin() {
+	public void visualizarPantalla() {
 		LoginWindow ven = new LoginWindow(this);
 		ven.setVisible(true);	
 	}
