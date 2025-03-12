@@ -17,9 +17,9 @@ public class WindowInsert extends JDialog implements ActionListener {
 	private final JPanel contentPanel=new JPanel();
 	private LoginControlador cont;
 	private JTextField textFieldName;
-	private JTextField textFieldPassword;
 	private JButton btnAdd;
 	private JLabel lblResult;
+	private JPasswordField passwordField;
 
 	public WindowInsert(JFrame parent, LoginControlador cont) {
 		super(parent,true);
@@ -32,11 +32,6 @@ public class WindowInsert extends JDialog implements ActionListener {
 		textFieldName.setBounds(151, 32, 107, 20);
 		getContentPane().add(textFieldName);
 		textFieldName.setColumns(10);
-
-		textFieldPassword = new JTextField();
-		textFieldPassword.setColumns(10);
-		textFieldPassword.setBounds(151, 82, 107, 20);
-		getContentPane().add(textFieldPassword);
 
 		JLabel lblName = new JLabel("Nombre de usuario:");
 		lblName.setBounds(50, 35, 99, 14);
@@ -54,6 +49,10 @@ public class WindowInsert extends JDialog implements ActionListener {
 		lblResult.setHorizontalAlignment(SwingConstants.CENTER);
 		lblResult.setBounds(10, 147, 314, 43);
 		getContentPane().add(lblResult);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(151, 82, 107, 20);
+		getContentPane().add(passwordField);
 		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 	}
@@ -61,7 +60,7 @@ public class WindowInsert extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==btnAdd) {
-			if (cont.insertarUsuario(new Usuario(textFieldName.getText(), textFieldPassword.getText()))) {
+			if (cont.insertarUsuario(new Usuario(textFieldName.getText(), new String(passwordField.getPassword())))) {
 				lblResult.setText("El usuario ha sido añadido correctamente.");
 			} else {
 				lblResult.setText("Ha occurido un error al añadir el usuario.");

@@ -62,7 +62,8 @@ public class WindowButtons extends JFrame implements ActionListener{
 			WindowShow dialog = new WindowShow(this,cont);
 			dialog.setVisible(true);
 		} else if (e.getSource()==btnUpdate) {
-			
+			WindowModify dialog = new WindowModify(this,cont);
+			dialog.setVisible(true);
 		} else if (e.getSource()==btnDelete) {
 			WindowDelete dialog = new WindowDelete(this,cont);
 			dialog.setVisible(true);

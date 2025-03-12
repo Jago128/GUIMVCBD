@@ -12,7 +12,7 @@ public class LoginWindow extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField textfieldName;
-	private JPasswordField textfieldPassword;
+	private JPasswordField passwordField;
 	private JButton btnLogin;
 	private LoginControlador cont;
 	JLabel lblResult;
@@ -33,9 +33,9 @@ public class LoginWindow extends JFrame implements ActionListener{
 		contentPane.add(textfieldName);
 		textfieldName.setColumns(10);
 
-		textfieldPassword = new JPasswordField();
-		textfieldPassword.setBounds(147, 79, 105, 19);
-		contentPane.add(textfieldPassword);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(147, 79, 105, 19);
+		contentPane.add(passwordField);
 
 		btnLogin = new JButton("Login");
 		btnLogin.setBounds(116, 119, 85, 21);
@@ -46,9 +46,9 @@ public class LoginWindow extends JFrame implements ActionListener{
 		lblName.setBounds(46, 41, 94, 16);
 		contentPane.add(lblName);
 
-		JLabel PasswordField = new JLabel("Contraseña:");
-		PasswordField.setBounds(78, 81, 62, 16);
-		contentPane.add(PasswordField);
+		JLabel lblPassword = new JLabel("Contraseña:");
+		lblPassword.setBounds(78, 81, 62, 16);
+		contentPane.add(lblPassword);
 		
 		lblResult = new JLabel("");
 		lblResult.setHorizontalAlignment(SwingConstants.CENTER);
@@ -59,7 +59,7 @@ public class LoginWindow extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==btnLogin) {
-			if (cont.comprobarUsuario(new Usuario (textfieldName.getText(),new String(textfieldPassword.getPassword())))) {
+			if (cont.comprobarUsuario(new Usuario (textfieldName.getText(),new String(passwordField.getPassword())))) {
 				lblResult.setText("Usuario Logeado");
 				WindowButtons frame = new WindowButtons(this,cont);
 				frame.setVisible(true);
