@@ -11,7 +11,7 @@ import javax.swing.border.*;
 import controlador.LoginControlador;
 import modelo.Usuario;
 
-public class VentanaInsertar extends JDialog implements ActionListener {
+public class WindowInsert extends JDialog implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel=new JPanel();
@@ -21,7 +21,7 @@ public class VentanaInsertar extends JDialog implements ActionListener {
 	private JButton btnAdd;
 	private JLabel lblResult;
 
-	public VentanaInsertar(JFrame parent, LoginControlador cont) {
+	public WindowInsert(JFrame parent, LoginControlador cont) {
 		super(parent,true);
 		this.cont=cont;
 		setTitle("Insertar Usuarios");

@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-public class ImplementacionDB implements UsuarioDAO{
+public class DBImplementation implements UsuarioDAO {
 	private Connection con;
 	private PreparedStatement stmt;
 	private ResourceBundle configFile;
@@ -20,14 +20,14 @@ public class ImplementacionDB implements UsuarioDAO{
 	private String userBD;
 	private String passwordBD;
 
-	final String SQLLOGIN = "SELECT * FROM usuario WHERE nombre = ? AND contrasena = ?";
+	final String SQLLOGIN = "SELECT * FROM usuario WHERE nombre = ? AND contraseña = ?";
 	final String SQLINSERT = "INSERT INTO usuario VALUES (?,?)";
 	final String SQLSHOW = "SELECT * FROM usuario";
 	final String SQLUPDATE = "UPDATE usuario SET contraseña=? WHERE nombre=?";
 	final String SQLDELETE = "DELETE FROM usuario WHERE nombre=?";
 
-	public ImplementacionDB() {
-		this.configFile = ResourceBundle.getBundle("modelo.configClase");
+	public DBImplementation() {
+		this.configFile = ResourceBundle.getBundle("modelo.classConfig");
 		this.driverBD = this.configFile.getString("Driver");
 		this.urlBD = this.configFile.getString("Conn");
 		this.userBD = this.configFile.getString("DBUser");
@@ -62,7 +62,7 @@ public class ImplementacionDB implements UsuarioDAO{
 			stmt.close();
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("Error al verificar credenciales: " + e.getMessage());
+			System.out.println("Error al verificar credenciales: "+e.getMessage());
 		}
 		return existe;
 	} 
@@ -81,7 +81,7 @@ public class ImplementacionDB implements UsuarioDAO{
 			stmt.close();
 			con.close();
 		} catch (SQLException e) {
-			System.out.println("Error al verificar credenciales: " + e.getMessage());
+			System.out.println("Error al verificar credenciales: "+e.getMessage());
 		}
 		return ok;
 	}
@@ -99,7 +99,7 @@ public class ImplementacionDB implements UsuarioDAO{
 			while (rs.next()) {
 				usuario = new Usuario();
 				usuario.setNombre(rs.getString("nombre"));
-				usuario.setContrasena(rs.getString("contrasena"));
+				usuario.setContrasena(rs.getString("contraseña"));
 				usuarios.put(usuario.getNombre(), usuario);			
 			}	
 			rs.close();

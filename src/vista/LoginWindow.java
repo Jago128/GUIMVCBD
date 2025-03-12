@@ -7,7 +7,7 @@ import javax.swing.border.*;
 import controlador.LoginControlador;
 import modelo.Usuario;
 
-public class VentanaLogin extends JFrame implements ActionListener{
+public class LoginWindow extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -17,7 +17,7 @@ public class VentanaLogin extends JFrame implements ActionListener{
 	private LoginControlador cont;
 	JLabel lblResult;
 
-	public VentanaLogin(LoginControlador controlador) {
+	public LoginWindow(LoginControlador controlador) {
 		this.cont=controlador;
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +61,7 @@ public class VentanaLogin extends JFrame implements ActionListener{
 		if (e.getSource()==btnLogin) {
 			if (cont.comprobarUsuario(new Usuario (textfieldName.getText(),new String(textfieldPassword.getPassword())))) {
 				lblResult.setText("Usuario Logeado");
-				VentanaBotones frame = new VentanaBotones(this,cont);
+				WindowButtons frame = new WindowButtons(this,cont);
 				frame.setVisible(true);
 				dispose();
 			} else {

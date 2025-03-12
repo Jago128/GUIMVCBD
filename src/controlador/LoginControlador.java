@@ -1,17 +1,17 @@
 package controlador;
 
-import modelo.ImplementacionDB;
+import modelo.DBImplementation;
 import modelo.Usuario;
 import modelo.UsuarioDAO;
-import vista.VentanaLogin;
+import vista.LoginWindow;
 
 import java.util.Map;
 
 public class LoginControlador {
-	UsuarioDAO dao=new ImplementacionDB();
+	UsuarioDAO dao=new DBImplementation();
 	
 	public void visualizarPantalla() {
-		VentanaLogin ven = new VentanaLogin(this);
+		LoginWindow ven = new LoginWindow(this);
 		ven.setVisible(true);	
 	}
 	

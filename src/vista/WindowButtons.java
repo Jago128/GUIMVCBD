@@ -7,7 +7,7 @@ import javax.swing.border.*;
 
 import controlador.LoginControlador;
 
-public class VentanaBotones extends JFrame implements ActionListener{
+public class WindowButtons extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -17,7 +17,7 @@ public class VentanaBotones extends JFrame implements ActionListener{
 	private JButton btnDelete;
 	private LoginControlador cont;
 
-	public VentanaBotones(JFrame parent, LoginControlador cont) {
+	public WindowButtons(JFrame parent, LoginControlador cont) {
 		setTitle("Elija una opcion:");
 		this.cont=cont;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,15 +56,15 @@ public class VentanaBotones extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource()==btnInsert) {
-			VentanaInsertar v=new VentanaInsertar(this,cont);
+			WindowInsert v=new WindowInsert(this,cont);
 			v.setVisible(true);
 		} else if (e.getSource()==btnShow) {
-			VentanaVisualizar dialog = new VentanaVisualizar(this,cont);
+			WindowShow dialog = new WindowShow(this,cont);
 			dialog.setVisible(true);
 		} else if (e.getSource()==btnUpdate) {
 			
 		} else if (e.getSource()==btnDelete) {
-			VentanaBorrar dialog = new VentanaBorrar();
+			WindowDelete dialog = new WindowDelete(this,cont);
 			dialog.setVisible(true);
 		}
 	}
