@@ -30,6 +30,6 @@ public class LoginController {
 	}
 
 	public boolean delete(String nom) {
-		return delete(nom);
+		return dao.delete(nom);
 	}
 }
